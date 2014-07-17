@@ -1,0 +1,6 @@
+RewriteEngine On
+
+#This for tinyfw
+RewriteCond %{REQUEST_URI}  ^/?([^/]*)?/?([^/]*)?/?(.*)?$  [NC]
+RewriteRule .*    index.php?_contr_=%1&_act_=%2&_param_=%3   [NC,L,B,QSA,NE]
+

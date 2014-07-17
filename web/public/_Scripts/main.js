@@ -1,0 +1,1 @@
+console.log('Empty main.js file');

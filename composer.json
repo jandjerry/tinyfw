@@ -1,0 +1,19 @@
+{
+	"name" : "jerry/chat",
+	"description" : "Chat With Strangers",
+	"authors" : [{
+			"name" : "Jerry Pham",
+			"email" : "jerry@andjerry.com"
+		}
+	],
+	"minimum-stability" : "beta",
+	"autoload" : {
+		"psr-0" : {
+			"TinyFw" : "src/jerry/",
+			"App" : ""
+		}
+	},
+	"require" : {
+		"firephp/firephp-core" : "*"
+	}
+}

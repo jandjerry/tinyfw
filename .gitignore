@@ -1,0 +1,8 @@
+.buildpath
+.project
+.settings/
+composer.lock
+composer.phar
+vendor/
+src/Tests
+web/tests

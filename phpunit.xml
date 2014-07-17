@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit  bootstrap="./vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" strict="true">
+    <testsuites>
+        <testsuite name="Proxy Test Suit">
+            <directory>./src/epinion/Proxy/Tests/</directory>
+        </testsuite>
+        <testsuite name="TinyFw Test Suit">
+            <directory>./src/epinion/TinyFw/Tests/</directory>
+        </testsuite>
+        <testsuite name="Server Configuration Test Suit">
+        	<!-- This test suit only for local test -->
+            <directory>./src/Tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
