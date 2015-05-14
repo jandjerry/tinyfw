@@ -6,12 +6,10 @@
 <title>Tiny PHP Framework</title>
 </head>
 
-<body style="padding: 0px; margin: 0px;">
+<body>
 <?php echo $output; ?>
 
-<link rel="stylesheet" href="/public/_Lib/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-<script src="//code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="/public/_Lib/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
-<script src="/public/_Scripts/check.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/public/_Scripts/main.js"></script>
 </body>
 </html>
