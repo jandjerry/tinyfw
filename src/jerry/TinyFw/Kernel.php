@@ -20,11 +20,14 @@ class Kernel
 		$this->input = Input::instance();
 		$this->output = new Output();
 	}
-	
-	/**
-	 * Build class name
-	 * @param string $route 
-	 */
+
+    /**
+     * Build class name
+     * @param string $route
+     * @param null $prefix
+     * @param null $suffix
+     * @return string
+     */
 	public static function buildClassNameFromRoutingParams( $route, $prefix = null, $suffix = null  )
 	{
 	    $route = strtolower( $route );
