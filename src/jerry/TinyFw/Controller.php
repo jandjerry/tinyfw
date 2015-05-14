@@ -94,13 +94,14 @@ class Controller
 	{
 		$this->contentType = $contentType ;
 	}
-	
-	/**
-	 * Mix data from action into template
-	 * @param mixed $data
-	 * @param string $template
-	 * @throws \Exception
-	 */
+
+    /**
+     * Mix data from action into template
+     * @param mixed $data
+     * @param string $template
+     * @return string
+     * @throws \Exception
+     */
 	public function render( $data, $template = null )
 	{
 	    $controllerName = Kernel::buildClassNameFromRoutingParams( $this->name );
@@ -110,7 +111,7 @@ class Controller
 		if( $template == null ){
 			$template = $actionName.'.html.php';
 		}
-		
+		$template = strtolower( $template );
 		$template = APP_DIR."/Template/".$controllerName."/{$template}";
 		
 		if( file_exists( $template ) ){
@@ -123,11 +124,12 @@ class Controller
 		
 		throw new \Exception("Template file {$template} is not found.");
 	}
-	
-	/**
-	 * If render JSON, change contentype of docment
-	 * @param <array>|<json string> $data
-	 */
+
+    /**
+     * If render JSON, change contentype of docment
+     * @param <array>|<json string> $data
+     * @return null
+     */
 	public function renderJSON( $data )
 	{
 		$this->contentType = 'application/javascript';

@@ -1,6 +1,6 @@
 {
-	"name" : "jerry/chat",
-	"description" : "Chat With Strangers",
+	"name" : "jerry/tinyfw",
+	"description" : "Tiny Framework",
 	"authors" : [{
 			"name" : "Jerry Pham",
 			"email" : "jerry@andjerry.com"
@@ -9,8 +9,9 @@
 	"minimum-stability" : "beta",
 	"autoload" : {
 		"psr-0" : {
-			"TinyFw" : "src/jerry/",
-			"App" : ""
+			"TinyFw\\" : "src/jerry/",
+            "Controller\\" : "app/",
+            "": "src/"
 		}
 	},
 	"require" : {

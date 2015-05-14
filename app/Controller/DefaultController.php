@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace Controller;
 use TinyFw\Controller;
 class DefaultController extends  Controller{
 	

@@ -50,7 +50,7 @@ class Kernel
 	{
 		$controllerName = $this->input->controllerName();
 		$controllerClass = self::buildClassNameFromRoutingParams( $controllerName , null, 'Controller');
-		$controllerClassFull = "App\\Controller\\{$controllerClass}";
+		$controllerClassFull = "Controller\\{$controllerClass}";
 		
 		$this->controller = new $controllerClassFull( $this->input );
 		
@@ -84,9 +84,10 @@ class Kernel
 	private function getLayoutPath()
 	{
 	    if( $this->controller->getLayout() !== false ){
-	       $layoutName = self::buildClassNameFromRoutingParams( $this->controller->getLayout() );
-	       $layout = APP_DIR."/Template/{$layoutName}.layout.html.php";
-	       return $layout;
+	        $layoutName = self::buildClassNameFromRoutingParams( $this->controller->getLayout() );
+            $layoutName = strtolower( $layoutName );
+	        $layout = APP_DIR."/Template/{$layoutName}.layout.html.php";
+	        return $layout;
 	    }
 	    return false;
 	}
