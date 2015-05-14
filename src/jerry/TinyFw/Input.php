@@ -15,6 +15,7 @@ class Input
 	{
 		if( self::$instance == null ){
 			self::$instance = new self();
+            self::$instance->processRouting();
 		}
 		return self::$instance;
 	}
@@ -32,7 +33,30 @@ class Input
 		$this->get = $get == null ? $_GET : $get ;
 		$this->post = $post == null ? $_POST : $post ;
 		$this->cookie = $cookie == null ? $_COOKIE : $cookie ;
+
+
 	}
+
+    private function processRouting()
+    {
+        //For nginx or cgi applications
+        if( !$this->getVariable('_contr_') ){
+            $tmp = explode( "/", trim( $_SERVER['REQUEST_URI'], " /") );
+            if( isset( $tmp[0] ) ){
+                $_GET['_contr_'] = $tmp[0];
+
+                if( isset( $tmp[1]) ){
+                    $_GET['_act_'] = $tmp[1];
+                }
+
+                for( $i = 2; $i < count( $tmp ); $i ++ ){
+                    if( isset( $tmp[$i] ) ){
+                        $_GET['_params_'][] = $tmp[$i];
+                    }
+                }
+            }
+        }
+    }
 	
 	/**
 	 * Set custom $_GET variable
@@ -108,5 +132,23 @@ class Input
 		$actionName = $actionName == null ? 'index' : $actionName;
 		return $actionName;
 	}
+
+    /**
+     * @return array
+     */
+    public function getParams()
+    {
+        return isset( $_GET['_params_'] ) ? $_GET['_params_'] : array();
+    }
+
+    /**
+     * @param $index
+     * @return null
+     */
+    public function getParam( $index )
+    {
+        $params = $this->getParams();
+        return isset( $params[ $index ]) ? $params[ $index ] : null;
+    }
 } 
 ?>
