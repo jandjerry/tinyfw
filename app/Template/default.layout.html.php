@@ -3,7 +3,7 @@
 <!-- jerry[at]andjerry[dot]com -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="/public/_StyleSheet/main.css" />
-<title>Proxy Control Panel</title>
+<title>Tiny PHP Framework</title>
 </head>
 
 <body style="padding: 0px; margin: 0px;">
