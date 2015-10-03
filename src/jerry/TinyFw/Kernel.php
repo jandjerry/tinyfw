@@ -1,6 +1,8 @@
 <?php
 namespace TinyFw;
-class Kernel 
+use TinyFw\DB\MySQLPDO;
+
+class Kernel
 {
 	/**
 	 * @var Input
@@ -11,14 +13,37 @@ class Kernel
 	 * @var Output
 	 */
 	private $output = null;
-	
+
+
 	private $controller = null;
+
+	/**
+	 * @var MySQLPDO
+	 */
+	private static $database;
 	
 	
 	function __construct()
 	{
 		$this->input = Input::instance();
 		$this->output = new Output();
+
+	}
+
+	/**
+	 * Connect to database
+	 */
+	public function connectDatabase()
+	{
+		self::$database = new MySQLPDO( DATABASE_DSN, DATABASE_USER, DATABASE_PASS );
+	}
+
+	/**
+	 * @return MySQLPDO
+	 */
+	public static function getDatabase()
+	{
+		return self::$database;
 	}
 
     /**
