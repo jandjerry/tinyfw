@@ -1,8 +1,6 @@
 <?php
 use TinyFw\DB\Mysql;
 
-define('SESSION_ROOT_URL_KEY', 'current_root_url');
-
 define('APP_DIR', dirname(__FILE__));
 define('ROOT_DIR', realpath(APP_DIR . '/../'));
 
