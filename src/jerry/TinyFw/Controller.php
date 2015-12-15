@@ -13,7 +13,7 @@ class Controller
     protected $contentType = null;
 
     /*
-     * @var mixed
+     * @var Output
      */
     protected $output = null;
 
@@ -147,7 +147,7 @@ class Controller
     public function redirect($path, $code = 301)
     {
         $this->layout = false;
-        header("Location: $path", true, $code);
+        $this->output->addHeader("Location: $path", true, $code);
         return $this->output;
     }
 }

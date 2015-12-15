@@ -1,5 +1,7 @@
 <?php
 namespace TinyFw;
+use Zend\Http\Header\HeaderInterface;
+
 class Output
 {
     /*
@@ -31,6 +33,7 @@ class Output
     /**
      * Set output data
      * @param unknown $data
+     * @param null $contentType
      */
     public function setOutputData($data, $contentType = null)
     {
@@ -41,17 +44,21 @@ class Output
     /**
      * Add header to output
      * @param unknown $header
+     * @param null $replace
+     * @param null $code
      */
-    public function addHeader($header)
+    public function addHeader($header, $replace = null, $code = null)
     {
+        if( $replace != null && $code != null ){
+            $header = array($header, $replace, $code);
+        }
+
         $this->headers[] = $header;
     }
 
 
     public function send($exit = true)
     {
-        $this->sendHeaders();
-
         switch ($this->contentType) {
             case 'application/json':
             case 'text/javascript':
@@ -65,9 +72,13 @@ class Output
                 break;
         }
 
+        //Send headers
+        $this->sendHeaders();
+
         echo $this->data;
+
         if ($exit == true) {
-            die();
+            exit(0);
         }
     }
 
@@ -77,7 +88,11 @@ class Output
     private function sendHeaders()
     {
         foreach ($this->headers as $header) {
-            Header($header);
+            if( is_array($header) && count($header) > 3){
+                Header($header[0], $header[1], $header[2]);
+            } else {
+                Header($header);
+            }
         }
     }
 
@@ -89,8 +104,6 @@ class Output
 
     public function processJSON()
     {
-        //Header("Content-Type: ". $this->contentType );
-        Header('Content-Type: application/json');
         if (is_array($this->data)) {
             $this->data = json_encode(array('data' => $this->data));
         }
