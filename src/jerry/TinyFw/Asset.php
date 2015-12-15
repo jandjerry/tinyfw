@@ -9,9 +9,9 @@ class Asset
         return self::assetPath($filepath, $dir);
     }
 
-    public static function js($filepath, $dir = null )
+    public static function js($filepath, $dir = null)
     {
-        $dir = $dir == null ? WEB_JS_PATH  : $dir;
+        $dir = $dir == null ? WEB_JS_PATH : $dir;
         return self::assetPath($filepath, $dir);
     }
 
@@ -23,7 +23,7 @@ class Asset
 
     public static function assetPath($filepath, $dir)
     {
-        $path = trim($dir, ' /').'/'.$filepath;
+        $path = trim($dir, ' /') . '/' . $filepath;
         return $path;
     }
 
