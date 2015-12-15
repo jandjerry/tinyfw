@@ -137,4 +137,17 @@ class Controller
 		$this->layout = false;
 		return $this->output;	
 	}
+
+    /**
+     * Redirect by header
+     * @param $path
+     * @param int $code
+     * @return null
+     */
+	public function redirect($path, $code = 301)
+    {
+        $this->layout = false;
+        header("Location: $path", true, $code);
+        return $this->output;
+    }
 }
