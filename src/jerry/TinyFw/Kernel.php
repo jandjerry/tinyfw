@@ -36,6 +36,7 @@ class Kernel
 	public function connectDatabase()
 	{
 		self::$database = new MySQLPDO( DATABASE_DSN, DATABASE_USER, DATABASE_PASS );
+		return self::$database;
 	}
 
 	/**
@@ -43,6 +44,9 @@ class Kernel
 	 */
 	public static function getDatabase()
 	{
+		if( !self::$database ){
+			return self::connectDatabase();
+		}
 		return self::$database;
 	}
 

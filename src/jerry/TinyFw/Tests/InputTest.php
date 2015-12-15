@@ -36,11 +36,8 @@ class InputTest extends \PHPUnit_Framework_TestCase
 		$this->assertEquals( $this->input->postVariable('testing'), null );
 		
 		$this->assertEquals( $this->input->getVariable('_contr_'), 'testing');
-		
-		
+
 	}
 	
-	
-	
-	
+
 }

@@ -1,6 +1,6 @@
 {
 	"name" : "jerry/tinyfw",
-	"description" : "Tiny Framework",
+	"description" : "Tiny Framework & MVC skeleton for small projects",
 	"authors" : [{
 			"name" : "Jerry Pham",
 			"email" : "jerry@andjerry.com"
@@ -15,6 +15,5 @@
 		}
 	},
 	"require" : {
-		"firephp/firephp-core" : "*"
 	}
 }

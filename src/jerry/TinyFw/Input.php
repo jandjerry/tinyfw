@@ -39,21 +39,25 @@ class Input
 
     private function processRouting()
     {
+
         //For nginx or cgi applications
         if( !$this->getVariable('_contr_') ){
-            $tmp = explode( "/", trim( $_SERVER['REQUEST_URI'], " /") );
-            if( isset( $tmp[0] ) ){
-                $_GET['_contr_'] = $tmp[0];
-                $this->get['_contr_'] = $tmp[0];
+            $route = $this->getVariable('_route_');
+            if($route) {
+                $tmp = explode("/", trim($route, " /"));
+                if (isset($tmp[0])) {
+                    $_GET['_contr_'] = $tmp[0];
+                    $this->get['_contr_'] = $tmp[0];
 
-                if( isset( $tmp[1]) ){
-                    $_GET['_act_'] = $tmp[1];
-                    $this->get['_act_'] = $tmp[1];
-                }
+                    if (isset($tmp[1])) {
+                        $_GET['_act_'] = $tmp[1];
+                        $this->get['_act_'] = $tmp[1];
+                    }
 
-                for( $i = 2; $i < count( $tmp ); $i ++ ){
-                    if( isset( $tmp[$i] ) ){
-                        $_GET['_params_'][] = $tmp[$i];
+                    for ($i = 2; $i < count($tmp); $i++) {
+                        if (isset($tmp[$i])) {
+                            $_GET['_params_'][] = $tmp[$i];
+                        }
                     }
                 }
             }

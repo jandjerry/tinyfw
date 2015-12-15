@@ -5,4 +5,3 @@ class App extends Kernel
 {
 	
 }
-?>
