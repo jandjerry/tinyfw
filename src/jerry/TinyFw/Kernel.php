@@ -77,7 +77,12 @@ class Kernel
 	    
 	    return $name;
 	}
-	
+
+	public function init()
+	{
+
+	}
+
 	private function &findController()
 	{
 		$controllerName = $this->input->controllerName();
@@ -128,6 +133,11 @@ class Kernel
 	public function render()
 	{
 		return $this->output->send();
+	}
+
+	public function terminate()
+	{
+		exit(0);
 	}
 }
 

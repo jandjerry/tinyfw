@@ -5,5 +5,7 @@ require_once ROOT_DIR.'/vendor/autoload.php';
 require_once ROOT_DIR.'/app/App.php';
 
 $app = new App();
+$app->init();
 $app->process();
 $app->render();
+$app->terminate();
