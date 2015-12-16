@@ -7,7 +7,7 @@
       "email": "jerry@andjerry.com"
     }
   ],
-  "minimum-stability": "beta",
+  "minimum-stability": "stable",
   "autoload": {
     "psr-0": {
       "TinyFw\\": "src/jerry/",
