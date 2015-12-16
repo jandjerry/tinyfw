@@ -12,3 +12,8 @@ addons:
 
 after_script:
   - vendor/bin/test-reporter
+
+notifications:
+  slack:
+    rooms:
+      - jandjerry:s1O9VDT4212fH2VKOQ9NBfO5#general
