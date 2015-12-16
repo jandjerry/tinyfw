@@ -2,3 +2,4 @@
 
 #Tiny PHP Framework
 
+Well, should we add more description here, how to setup and use this tinny Fw
