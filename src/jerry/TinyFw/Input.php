@@ -39,7 +39,6 @@ class Input
 
     private function processRouting()
     {
-
         //For nginx or cgi applications
         if (!$this->getVariable('_contr_')) {
             $route = $this->getVariable('_route_');
@@ -56,7 +55,7 @@ class Input
 
                     for ($i = 2; $i < count($tmp); $i++) {
                         if (isset($tmp[$i])) {
-                            $_GET['_params_'][] = $tmp[$i];
+                            $this->get['_params_'][] = $tmp[$i];
                         }
                     }
                 }
@@ -143,7 +142,7 @@ class Input
      */
     public function getParams()
     {
-        return isset($_GET['_params_']) ? $_GET['_params_'] : array();
+        return isset($this->get['_params_']) ? $this->get['_params_'] : array();
     }
 
     /**
