@@ -132,7 +132,7 @@ class Controller
      */
     public function renderJSON($data)
     {
-        $this->contentType = 'application/javascript';
+        $this->contentType = 'application/json';
         $this->output = $data;
         $this->layout = false;
         return $this->output;

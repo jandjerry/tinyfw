@@ -1,6 +1,5 @@
 <?php
 namespace TinyFw;
-use Zend\Http\Header\HeaderInterface;
 
 class Output
 {
@@ -64,9 +63,8 @@ class Output
             case 'text/javascript':
             case 'application/x-javascript':
             case 'application/javascript':
-            case 'application/jsonp': {
+            case 'application/jsonp':
                 $this->processJSON();
-            }
                 break;
             default:
                 break;
@@ -104,6 +102,7 @@ class Output
 
     public function processJSON()
     {
+        $this->addHeader("Content-Type: ".$this->contentType);
         if (is_array($this->data)) {
             $this->data = json_encode(array('data' => $this->data));
         }
