@@ -42,7 +42,8 @@ class Controller
         $actionMethod = lcfirst($actionMethod);
 
         if (method_exists($this, $actionMethod)) {
-            $this->output = $this->{$actionMethod}();
+            //$this->output = $this->{$actionMethod}();
+            $this->output = call_user_func_array(array($this, $actionMethod), $this->input->getParams());
             return;
         }
 
