@@ -103,8 +103,9 @@ class Output
     public function processJSON()
     {
         $this->addHeader("Content-Type: ".$this->contentType);
+        $this->data = is_array($this->data) ? $this->data : array($this->data);
         if (is_array($this->data)) {
-            $this->data = json_encode(array('data' => $this->data));
+            $this->data = json_encode($this->data);
         }
     }
 
