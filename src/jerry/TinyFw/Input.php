@@ -53,9 +53,6 @@ class Input
             $this->request = is_array($this->request) ? $this->request : array();
             $this->request = array_merge($this->request, $stdInput);
         }
-
-        die(print_r($this->request,true));
-
     }
 
     private function processRouting()
