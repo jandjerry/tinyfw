@@ -47,8 +47,12 @@ class Input
         $stdInput = file_get_contents("php://input");
         //TODO Improve this to match with headers
         if($stdInput){
-            $stdInput = json_decode($stdInput);
+            if( isset($_REQUEST[$stdInput])){
+                unset($_REQUEST[$stdInput]);
+            }
+            $stdInput = json_decode($stdInput, true);
         }
+
 
         if(is_array($stdInput)){
             $this->request = is_array($this->request) ? $this->request : array();
