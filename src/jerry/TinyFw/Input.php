@@ -21,7 +21,7 @@ class Input
         return self::$instance;
     }
 
-    private $get, $post, $cookie, $request;
+    private $get, $post, $cookie, $request, $requestMethod;
 
     /**
      * Constructor
@@ -32,6 +32,7 @@ class Input
      */
     function __construct($get = null, $post = null, $cookie = null, $request = null)
     {
+        $this->requestMethod = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : "GET";
         $this->get = $get == null ? $_GET : $get;
         $this->post = $post == null ? $_POST : $post;
         $this->cookie = $cookie == null ? $_COOKIE : $cookie;
@@ -55,6 +56,9 @@ class Input
         }
     }
 
+    /**
+     * Process routing
+     */
     private function processRouting()
     {
         //For nginx or cgi applications
@@ -81,6 +85,15 @@ class Input
         }
     }
 
+
+    /**
+     * Get request method
+     * @return string
+     */
+    public function requestMethod()
+    {
+        return $this->requestMethod;
+    }
 
     /**
      * @param array $request
