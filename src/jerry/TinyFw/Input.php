@@ -16,24 +16,45 @@ class Input
         if (self::$instance == null) {
             self::$instance = new self();
             self::$instance->processRouting();
+            self::$instance->processRequest();
         }
         return self::$instance;
     }
 
-    private $get, $post, $cookie;
+    private $get, $post, $cookie, $request;
 
     /**
      * Constructor
      * @param array $get
      * @param array $post
      * @param array $cookie
+     * @param array $request
      */
-    function __construct($get = null, $post = null, $cookie = null)
+    function __construct($get = null, $post = null, $cookie = null, $request = null)
     {
         $this->get = $get == null ? $_GET : $get;
         $this->post = $post == null ? $_POST : $post;
         $this->cookie = $cookie == null ? $_COOKIE : $cookie;
+        $this->request = $request == null ? $_REQUEST : $request;
+    }
 
+    /**
+     * Process request ($_REQUEST / php://input
+     */
+    private function processRequest()
+    {
+        $stdInput = file_get_contents("php://input");
+        //TODO Improve this to match with headers
+        if($stdInput){
+            $stdInput = json_decode($stdInput);
+        }
+
+        if(is_array($stdInput)){
+            $this->request = is_array($this->request) ? $this->request : array();
+            $this->request = array_merge($this->request, $stdInput);
+        }
+
+        die(print_r($this->request,true));
 
     }
 
@@ -61,6 +82,23 @@ class Input
                 }
             }
         }
+    }
+
+
+    /**
+     * @param array $request
+     */
+    public function setRequest(array $request)
+    {
+        $this->request = $request;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getRequest()
+    {
+        return $this->request;
     }
 
     /**
@@ -96,6 +134,19 @@ class Input
         if (isset($this->get[$key])) {
 
             return $this->get[$key];
+        }
+        return null;
+    }
+
+    /**
+     * $_REQUEST + php://input json sring
+     * @param $key
+     * @return null
+     */
+    public function requestVariable($key)
+    {
+        if(isset($this->request[$key])){
+            return $this->request[$key];
         }
         return null;
     }
