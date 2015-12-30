@@ -42,7 +42,8 @@ class Controller
         $actionMethod = lcfirst($actionMethod);
 
         if (method_exists($this, $actionMethod)) {
-            $this->output = $this->{$actionMethod}();
+            //$this->output = $this->{$actionMethod}();
+            $this->output = call_user_func_array(array($this, $actionMethod), $this->input->getParams());
             return;
         }
 
@@ -132,7 +133,7 @@ class Controller
      */
     public function renderJSON($data)
     {
-        $this->contentType = 'application/javascript';
+        $this->contentType = 'application/json';
         $this->output = $data;
         $this->layout = false;
         return $this->output;

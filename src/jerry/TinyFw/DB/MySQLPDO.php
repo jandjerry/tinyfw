@@ -66,7 +66,7 @@ class MySQLPDO extends \PDO
 
     private function filter($table, $info)
     {
-        $driver = $this->getAttribute(PDO::ATTR_DRIVER_NAME);
+        $driver = $this->getAttribute(\PDO::ATTR_DRIVER_NAME);
         if ($driver == 'sqlite') {
             $sql = "PRAGMA table_info('" . $table . "');";
             $key = "name";
@@ -127,7 +127,7 @@ class MySQLPDO extends \PDO
             if ($pdostmt->execute($this->bind) !== false) {
                 if (preg_match("/^(" . implode("|", array("select", "describe", "pragma")) . ") /i",
                     $this->sql)) {
-                    return $pdostmt->fetchAll(PDO::FETCH_ASSOC);
+                    return $pdostmt->fetchAll(\PDO::FETCH_ASSOC);
                 } elseif (preg_match("/^(" . implode("|", array("delete", "insert", "update")) . ") /i",
                     $this->sql)) {
                     return $pdostmt->rowCount();

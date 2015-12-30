@@ -34,7 +34,7 @@ class Kernel
     /**
      * Connect to database
      */
-    public function connectDatabase()
+    public static function connectDatabase()
     {
         self::$database = new MySQLPDO(DATABASE_DSN, DATABASE_USER, DATABASE_PASS);
         return self::$database;
