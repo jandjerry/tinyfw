@@ -7,7 +7,7 @@
       "email": "jerry@andjerry.com"
     }
   ],
-  "minimum-stability": "beta",
+  "minimum-stability": "stable",
   "autoload": {
     "psr-0": {
       "TinyFw\\": "src/jerry/",
@@ -16,5 +16,8 @@
     }
   },
   "require": {
+  },
+  "require-dev": {
+    "codeclimate/php-test-reporter": "0.2.0"
   }
 }

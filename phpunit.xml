@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./vendor/autoload.php" colors="true" convertErrorsToExceptions="true"
          convertNoticesToExceptions="true" convertWarningsToExceptions="true" strict="true">
-    <testsuites>
-        <testsuite name="Proxy Test Suit">
-            <directory>./src/epinion/Proxy/Tests/</directory>
+        <testsuite name="All">
+            <directory>./src/*/*/Tests/</directory>
+            <directory>./src/*/Tests/</directory>
+            <directory>./tests/*/Tests/</directory>
+            <directory>./tests/*/*/Tests/</directory>
         </testsuite>
-        <testsuite name="TinyFw Test Suit">
-            <directory>./src/epinion/TinyFw/Tests/</directory>
-        </testsuite>
-        <testsuite name="Server Configuration Test Suit">
-            <!-- This test suit only for local test -->
-            <directory>./src/Tests/</directory>
-        </testsuite>
-    </testsuites>
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./tests</directory>
+            <exclude>
+                <directory suffix="html.php">./</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>

@@ -1,0 +1,19 @@
+language: php
+php:
+  - '5.6'
+
+script:
+  - composer install
+  - phpunit
+
+addons:
+  code_climate:
+    repo_token: 4c7f11932aa3941282817184b239c28c2e46764015c45c0efa437d7b30583249
+
+after_script:
+  - vendor/bin/test-reporter
+
+notifications:
+  slack:
+    rooms:
+      - jandjerry:s1O9VDT4212fH2VKOQ9NBfO5#general
